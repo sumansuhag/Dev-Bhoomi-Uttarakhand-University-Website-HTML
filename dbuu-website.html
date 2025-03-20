@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dev Bhoomi Uttarakhand University</title>
+    <style>
+        :root {
+            --primary: #1a4e8e;
+            --secondary: #e67e22;
+            --light: #f5f5f5;
+            --dark: #333;
+            --success: #2ecc71;
+            --info: #3498db;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            width: 60px;
+            height: 60px;
+            margin-right: 10px;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        .logo-text p {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .hero {
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/api/placeholder/1200/500');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            margin: 0 0.5rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .btn-outline {
+            border: 2px solid white;
+            color: white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #777;
+        }
+        
+        .departments {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .department-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        
+        .department-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .department-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .department-content {
+            padding: 1.5rem;
+        }
+        
+        .department-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+        }
+        
+        .department-content p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .tab-container {
+            margin-top: 2rem;
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        
+        .tab-btn {
+            padding: 1rem 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #777;
+            transition: all 0.3s;
+        }
+        
+        .tab-btn.active {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #f5f5f5;
+            color: var(--primary);
+        }
+        
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .dashboard {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .dashboard-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background-color: var(--light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .stat-card h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-card p {
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .chart-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .chart {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .chart h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #444;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            .chart-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Canvas for charts */
+        canvas {
+            width: 100%;
+            height: 300px;
+        }
+        
+        /* Accordion styles for course details */
+        .accordion {
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .accordion-header {
+            background-color: #f9f9f9;
+            padding: 1rem;
+            cursor: pointer;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .accordion-header:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .accordion-content {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .accordion-content.active {
+            padding: 1rem;
+            max-height: 1000px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div style="width: 60px; height: 60px; background-color: #e67e22; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold; font-size: 24px;">DBUU</div>
+                <div class="logo-text">
+                    <h1>Dev Bhoomi Uttarakhand University</h1>
+                    <p>Excellence in Education since 2005</p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#fees">Fees</a></li>
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h2>Welcome to Dev Bhoomi Uttarakhand University</h2>
+            <p>Empowering Minds, Transforming Lives - A Premier Educational Institution in the Heart of Uttarakhand</p>
+            <div>
+                <a href="#courses" class="btn btn-primary">Explore Courses</a>
+                <a href="#contact" class="btn btn-outline">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="departments">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Departments</h2>
+                <p>Dev Bhoomi Uttarakhand University offers a wide range of programs across various disciplines to cater to diverse career aspirations.</p>
+            </div>
+            
+            <div class="departments">
+                <div class="department-card">
+                    <img src="/api/placeholder/400/300" alt="Engineering">
+                    <div class="department-content">
+                        <h3>Engineering & Technology</h3>
+                        <p>Cutting-edge programs in various engineering disciplines with state-of-the-art laboratories.</p>
+                        <a href="#courses" class="btn btn-primary">View Courses</a>
+                    </div>
+                </div>
+                
+                <div class="department-card">
+                    <img src="/api/placeholder/400/300" alt="Management">
+                    <div class="department-content">
+                        <h3>Management Studies</h3>
+                        <p>Industry-aligned management programs focusing on leadership and entrepreneurial skills.</p>
+                        <a href="#courses" class="btn btn-primary">View Courses</a>
+                    </div>
+                </div>
+                
+                <div class="department-card">
+                    <img src="/api/placeholder/400/300" alt="Computer Applications">
+                    <div class="department-content">
+                        <h3>Computer Applications</h3>
+                        <p>Advanced computing programs designed to meet the demands of the digital era.</p>
+                        <a href="#courses" class="btn btn-primary">View Courses</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="courses" style="background-color: #f5f8fa;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Courses</h2>
+                <p>Explore our comprehensive range of undergraduate, postgraduate, and doctoral programs designed to prepare you for global challenges.</p>
+            </div>
+            
+            <div class="tab-container">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="undergraduate">Undergraduate</button>
+                    <button class="tab-btn" data-tab="postgraduate">Postgraduate</button>
+                    <button class="tab-btn" data-tab="doctorate">Doctorate</button>
+                    <button class="tab-btn" data-tab="diploma">Diploma & Certificate</button>
+                </div>
+                
+                <div id="undergraduate" class="tab-content active">
+                    <div class="accordion">
+                        <div class="accordion-header">
+                            B.Tech in Computer Science & Engineering
+                            <span>+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p><strong>Duration:</strong> 4 Years</p>
+                            <p><strong>Eligibility:</strong> 10+2 with PCM (50% minimum)</p>
+                            <p><strong>Annual Fee:</strong> ₹1,20,000</p>
+                            <p><strong>Intake:</strong> 120 seats</p>
+                            <p><strong>Key Subjects:</strong> Data Structures, Algorithms, Database Management Systems, Operating Systems, Computer Networks, Software Engineering, Artificial Intelligence</p>
+                            <p><strong>Career Prospects:</strong> Software Developer, System Analyst, Network Administrator, Database Administrator, AI Engineer</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion">
+                        <div class="accordion-header">
+                            B.Tech in Mechanical Engineering
+                            <span>+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p><strong>Duration:</strong> 4 Years</p>
+                            <p><strong>Eligibility:</strong> 10+2 with PCM (50% minimum)</p>
+                            <p><strong>Annual Fee:</strong> ₹1,10,000</p>
+                            <p><strong>Intake:</strong> 90 seats</p>
+                            <p><strong>Key Subjects:</strong> Thermodynamics, Fluid Mechanics, Manufacturing Processes, Machine Design, CAD/CAM, Industrial Engineering</p>
+                            <p><strong>Career Prospects:</strong> Mechanical Engineer, Production Engineer, Design Engineer, Quality Control Engineer</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion">
+                        <div class="accordion-header">
+                            BBA (Bachelor of Business Administration)
+                            <span>+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p><strong>Duration:</strong> 3 Years</p>
+                            <p><strong>Eligibility:</strong> 10+2 in any stream (50% minimum)</p>
+                            <p><strong>Annual Fee:</strong> ₹75,000</p>
+                            <p><strong>Intake:</strong> 60 seats</p>
+                            <p><strong>Key Subjects:</strong> Principles of Management, Marketing Management, Financial Accounting, Human Resource Management, Operations Research</p>
+                            <p><strong>Career Prospects:</strong> Management Trainee, Marketing Executive, HR Executive, Entrepreneur</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="postgraduate" class="tab-content">
+                    <div class="accordion">
+                        <div class="accordion-header">
+                            M.Tech in Computer Science & Engineering
+                            <span>+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p><strong>Duration:</strong> 2 Years</p>
+                            <p><strong>Eligibility:</strong> B.Tech or equivalent (60% minimum)</p>
+                            <p><strong>Annual Fee:</strong> ₹1,50,000</p>
+                            <p><strong>Intake:</strong> 30 seats</p>
+                            <p><strong>Key Subjects:</strong> Advanced Algorithms, Machine Learning, Cloud Computing, Internet of Things, Blockchain Technology</p>
+                            <p><strong>Career Prospects:</strong> Software Architect, Data Scientist, Research Engineer, Technology Consultant</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion">
+                        <div class="accordion-header">
+                            MBA (Master of Business Administration)
+                            <span>+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p><strong>Duration:</strong> 2 Years</p>
+                            <p><strong>Eligibility:</strong> Bachelor's degree in any discipline (50% minimum)</p>
+                            <p><strong>Annual Fee:</strong> ₹1,80,000</p>
+                            <p><strong>Intake:</strong> 60 seats</p>
+                            <p><strong>Specializations:</strong> Marketing, Finance, HR, Operations, International Business</p>
+                            <p><strong>Key Subjects:</strong> Strategic Management, Business Analytics, Financial Management, Marketing Research, Organizational Behavior</p>
+                            <p><strong>Career Prospects:</strong> Business Analyst, Project Manager, Finance Manager, Marketing Manager, Consultant</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion">
+                        <div class="accordion-header">
+                            M.Sc in Data Science
+                            <span>+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p><strong>Duration:</strong> 2 Years</p>
+                            <p><strong>Eligibility:</strong> Bachelor's degree in Statistics/Mathematics/Computer Science (55% minimum)</p>
+                            <p><strong>Annual Fee:</strong> ₹1,20,000</p>
+                            <p><strong>Intake:</strong> 30 seats</p>
+                            <p><strong>Key Subjects:</strong> Statistical Methods, Machine Learning, Big Data Analytics, Data Visualization, Deep Learning</p>
+                            <p><strong>Career Prospects:</strong> Data Scientist, Data Analyst, Business Intelligence Specialist, Machine Learning Engineer</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="doctorate" class="tab-content">
+                    <div class="accordion">
+                        <div class="accordion-header">
+                            Ph.D in Engineering
+                            <span>+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p><strong>Duration:</strong> 3-5 Years</p>
+                            <p><strong>Eligibility:</strong> Master's degree in relevant discipline (60% minimum)</p>
+                            <p><strong>Annual Fee:</strong> ₹80,000</p>
+                            <p><strong>Intake:</strong> Based on available research supervisors</p>
+                            <p><strong>Research Areas:</strong> AI & Machine Learning, Robotics, Renewable Energy, Material Science, IoT</p>
+                            <p><strong>Career Prospects:</strong> Research Scientist, Professor, R&D Specialist, Technology Consultant</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion">
+                        <div class="accordion-header">
+                            Ph.D in Management
+                            <span>+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p><strong>Duration:</strong> 3-5 Years</p>
+                            <p><strong>Eligibility:</strong> Master's degree in Management or related field (60% minimum)</p>
+                            <p><strong>Annual Fee:</strong> ₹75,000</p>
+                            <p><strong>Intake:</strong> Based on available research supervisors</p>
+                            <p><strong>Research Areas:</strong> Strategic Management, Marketing Analytics, Financial Modeling, Organizational Behavior, Sustainable Business Practices</p>
+                            <p><strong>Career Prospects:</strong> Academic Researcher, Management Consultant, Corporate Strategist</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="diploma" class="tab-content">
+                    <div class="accordion">
+                        <div class="accordion-header">
+                            Diploma in Digital Marketing
+                            <span>+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p><strong>Duration:</strong> 1 Year</p>
+                            <p><strong>Eligibility:</strong> 10+2 in any stream</p>
+                            <p><strong>Fee:</strong> ₹45,000</p>
+                            <p><strong>Intake:</strong> 30 seats</p>
+                            <p><strong>Key Subjects:</strong> Social Media Marketing, SEO, Content Marketing, Email Marketing, Analytics</p>
+                            <p><strong>Career Prospects:</strong> Digital Marketing Specialist, SEO Analyst, Social Media Manager</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion">
+                        <div class="accordion-header">
+                            Certificate in Artificial Intelligence
+                            <span>+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p><strong>Duration:</strong> 6 Months</p>
+                            <p><strong>Eligibility:</strong> Bachelor's degree in any discipline</p>
+                            <p><strong>Fee:</strong> ₹30,000</p>
+                            <p><strong>Intake:</strong> 40 seats</p>
+                            <p><strong>Key Subjects:</strong> Introduction to AI, Machine Learning Fundamentals, Neural Networks, AI Applications</p>
+                            <p><strong>Career Prospects:</strong> AI Specialist, ML Developer, Data Analyst</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="fees">
+        <div class="container">
+            <div class="section-title">
+                <h2>Fee Structure</h2>
+                <p>Transparent and comprehensive details about tuition fees, scholarships, and financial assistance available at DBUU.</p>
+            </div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Program</th>
+                        <th>Tuition Fee (Annual)</th>
+                        <th>Development Fee</th>
+                        <th>Other Charges</th>
+                        <th>Total (1st Year)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>B.Tech (All Branches)</td>
+                        <td>₹1,00,000</td>
+                        <td>₹15,000</td>
+                        <td>₹10,000</td>
+                        <td>₹1,25,000</td>
+                    </tr>
+                    <tr>
+                        <td>BBA</td>
+                        <td>₹60,000</td>
+                        <td>₹10,000</td>
+                        <td>₹5,000</td>
+                        <td>₹75,000</td>
+                    </tr>
+                    <tr>
+                        <td>MBA</td>
+                        <td>₹1,50,000</td>
+                        <td>₹20,000</td>
+                        <td>₹10,000</td>
+                        <td>₹1,80,000</td>
+                    </tr>
+                    <tr>
+                        <td>M.Tech</td>
+                        <td>₹1,20,000</td>
+                        <td>₹20,000</td>
+                        <td>₹10,000</td>
+                        <td>₹1,50,000</td>
+                    </tr>
+                    <tr>
+                        <td>M.Sc</td>
+                        <td>₹90,000</td>
+                        <td>₹20,000</td>
+                        <td>₹10,000</td>
+                        <td>₹1,20,000</td>
+                    </tr>
+                    <tr>
+                        <td>Ph.D</td>
+                        <td>₹70,000</td>
+                        <td>₹5,000</td>
+                        <td>₹5,000</td>
+                        <td>₹80,000</td>
+                    </tr>
+                    <tr>
+                        <td>Diploma Programs</td>
+                        <td>₹40,000</td>
+                        <td>₹3,000</td>
+                        <td>₹2,000</td>
+                        <td>₹45,000</td>
+                    </tr>
+                    <tr>
+                        <td>Certificate Programs</td>
+                        <td>₹25,000</td>
+                        <td>₹3,000</td>
+                        <td>₹2,000</td>
+                        <td>₹30,000</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div style="margin-top: 2rem;">
+                <h3>Scholarships & Financial Aid</h3>
+                <p>Dev Bhoomi Uttarakhand University offers various scholarships to meritorious students and those from economically disadvantaged backgrounds:</p>
+                <ul style="margin-left: 2rem; margin-top: 1rem;">
+                    <li><strong>Merit Scholarship:</strong> Up to 50% tuition fee waiver for students with 90% and above in qualifying exams</li>
+                    <li><strong>Sports Scholarship:</strong> Up to 30% fee waiver for students with achievements in national/international sports</li>
+                    <li><strong>Uttarakhand Domicile Scholarship:</strong> Special 20% fee concession for students from Uttarakhand</li>
+                    <li><strong>Defense Personnel Ward Scholarship:</strong> 15% fee concession for wards of defense personnel</li>
+                    <li><strong>Alumni Scholarship:</strong> 10% fee concession for siblings/wards of DBUU alumni</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="dashboard" style="background-color: #f5f8fa;">
+        <div class="container">
+            <div class="section-title">
+                <h2>University Dashboard</h2>
+                <p>Interactive visualization of university statistics, achievements, and performance metrics.</p>
+            </div>
+            
+            <div class="dashboard">
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <h3>5000+</h3>
+                        <p>Students Enrolled</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>250+</h3>
+                        <p>Faculty Members</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>35+</h3>
+                        <p>Programs Offered</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>90%+</h3>
+                        <p>Placement Rate</p>
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <div class="chart">
+                        <h3>Student Enrollment by Department</h3>
+                        <canvas id="enrollmentChart"></canvas>
+                    </div>
+                    <div class="chart">
+                        <h3>Placement Statistics (Last 5 Years)</h3>
+                        <canvas id="placementChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="chart-container" style="margin-top: 2rem;">
+                    <div class="chart">
+                        <h3>Research Publications</h3>
+                        <canvas id="researchChart"></canvas>
+                    </div>
+                    <div class="chart">
+                        <h3>International Collaborations</h3>
+                        <canvas id="collaborationChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about
